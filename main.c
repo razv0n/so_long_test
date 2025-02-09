@@ -23,7 +23,7 @@ void check_errors_of_map(char **map)
     check_is_rectangular(map);
     check_elemnts(map);
     check_the_state_of_wall(map);
-    flid_foll(map);
+    flood_fill(map);
 }
 
 int main(int ac, char **av)
@@ -40,7 +40,7 @@ int main(int ac, char **av)
             return (-1);
         fd = open(av[1], O_RDWR);
         if (fd == -1)
-            return (free(map), -1);
+            return (free(map), strerror(errno), -1);
         i = 0;
         map[i] = get_next_line(fd);
         while(map[i])
@@ -51,6 +51,5 @@ int main(int ac, char **av)
         map[i] = NULL;
         check_errors_of_map(map);
         close(fd);
-        //! free_aloc(map);
     }
 }

@@ -13,7 +13,7 @@
 int lenght_of_map();
 
 void    check_is_rectangular(char **map);
-
+void    flood_fill(char **map);
 int ft_print(char   *str, int std);
 int    ft_len(char *str);
 
