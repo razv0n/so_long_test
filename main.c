@@ -1,5 +1,6 @@
 #include "so_long.h"
-
+#include <string.h>
+#include <errno.h>
 enum e_map
 {
     complete_wall,
@@ -40,7 +41,10 @@ int main(int ac, char **av)
             return (-1);
         fd = open(av[1], O_RDWR);
         if (fd == -1)
-            return (free(map), strerror(errno), -1);
+        {
+            strerror(errno);
+            return (free(map), -1);
+        }
         i = 0;
         map[i] = get_next_line(fd);
         while(map[i])

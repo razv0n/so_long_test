@@ -47,7 +47,6 @@ void    flood_fill_aux(char **map, int i, int j)
     flood_fill_aux(map, i, j + 1);
     flood_fill_aux(map, i, j - 1);
 
-    check_elemts(map);
 }
 
 void    flood_fill(char **map)
@@ -71,4 +70,5 @@ void    flood_fill(char **map)
         i++;
     }
     flood_fill_aux(map, i, j);
+    check_elemts(map);
 }
