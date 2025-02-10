@@ -26,3 +26,14 @@ int	ft_strcmp(const char *s1, char *s2)
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+int    ft_len(char *str)
+{
+    int i;
+
+    i = 0;
+    if (!str)
+        return (i);
+    while (str[i])
+        i++;
+    return (i);
+}

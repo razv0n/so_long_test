@@ -14,6 +14,7 @@ void    check_elemts(char **map)
         {
             if(map[i][j] == 'C' || map[i][j] == 'E' || map[i][j] == 'P')
             {
+                free_map(map);
                 perror("Error\n");
                 exit(1);                
             }
