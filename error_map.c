@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:21:39 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/10 16:03:03 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/10 17:14:38 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void    check_is_rectangular(char **map)
     }
 }
 
-int lenght_of_map()
+int lenght_of_map(char *str)
 {
     int fd;
     char *line;
     int lenght;
 
-    fd = open("maps.ber", O_RDWR);
+    fd = open(str, O_RDWR);
     if (fd == -1)
     {
         ft_print("Error\nthe file not found\n", 2);
@@ -103,7 +103,7 @@ void    check_elemnts(char **map)
     }
     error_display(count_E, count_C, count_P, map);
 }
-void    check_the_state_of_wall(char **map)
+void    check_the_state_of_wall(char **map, char *str)
 {
     int (i), (j), (lenght), (total_lenght);
     total_lenght = lenght_of_map() - 1;

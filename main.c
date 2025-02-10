@@ -9,7 +9,7 @@ enum e_map
     starting_position
 };
 
-void check_errors_of_map(char **map)
+void check_errors_of_map(char **map, char *str)
 {
     if (!map[0])
     {
@@ -18,7 +18,7 @@ void check_errors_of_map(char **map)
     }
     check_is_rectangular(map);
     check_elemnts(map);
-    check_the_state_of_wall(map);
+    check_the_state_of_wall(map, str);
     flood_fill(map);
 }
 
@@ -30,7 +30,7 @@ int main(int ac, char **av)
     if (ac == 2)
     {
         check_extension(av);
-        lenght = lenght_of_map();
+        lenght = lenght_of_map(av[1]);
         map = malloc((lenght + 1) * sizeof(char *));
         if (!map)
             return (-1);
@@ -45,7 +45,7 @@ int main(int ac, char **av)
             map[i] = get_next_line(fd);
         }
         map[i] = NULL;
-        check_errors_of_map(map);
+        check_errors_of_map(map, av[1]);
         close(fd);
         free_map(map);
     }
