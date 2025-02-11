@@ -6,13 +6,11 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:47 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/11 16:40:30 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/11 20:37:33 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <string.h>
-#include <errno.h>
 
 void check_errors_of_map(char **map, char *str)
 {
@@ -40,7 +38,6 @@ int main(int ac, char **av)
         if (!map)
             return (-1);
         fd = open(av[1], O_RDWR);
-        // printf("strinf is :%s",av[1]);
         if (fd == -1)
             return (free(map), -1);
         i = 0;

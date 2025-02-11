@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:09:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/11 16:05:16 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/11 21:54:12 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void display_window(char **map)
         exit(1);
     }
     count_hight_width(map, all);
-    all->mlx = mlx_init();
-    all->mlx_new_win = mlx_new_window(all->mlx, all->dimensions->width, all->dimensions->height, "so_long");
     all->image = malloc(sizeof(t_imgs));
     if (!all->image)
     {
         free_map(map);
         exit(1);
     }
+    all->mlx = mlx_init();
+    all->mlx_new_win = mlx_new_window(all->mlx, all->dimensions->width, all->dimensions->height, "so_long");
     all->image->img_floor = mlx_xpm_file_to_image(all->mlx, FLOOR_XPM, &i, &j);
     all->image->img_wall = mlx_xpm_file_to_image(all->mlx, WALL_XPM, &i, &j);
     all->image->img_player = mlx_xpm_file_to_image(all->mlx, PLAYER_LEFT_XPM,  &i, &j);

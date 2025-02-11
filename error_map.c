@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:21:39 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/11 16:49:54 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/11 18:14:49 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ void    check_elemnts(char **map)
                 count_E++;
             else if (map[i][j] == 'P')
                 count_P++;
-            else if (map[i][j] != '0' && map[i][j] != '1')
+            else if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != '\n')
             {
-                printf("the i :%d the j : %d the char is %c\n",i, j ,map[i][j]);
+                // printf("the i :%d the j : %d the char is %c\n",i, j ,map[i][j]);
                 free_map(map);
                 exit(ft_print("Error\nunknown elemnts\n", 2));
             }
