@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:21:39 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/10 17:14:38 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/11 13:58:13 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int lenght_of_map(char *str)
     close(fd);
     return (lenght);
 }
+
 void    check_elemnts(char **map)
 {
     int (count_E), (count_C), (count_P), (i), (j);
@@ -103,6 +104,7 @@ void    check_elemnts(char **map)
     }
     error_display(count_E, count_C, count_P, map);
 }
+
 void    check_the_state_of_wall(char **map, char *str)
 {
     int (i), (j), (lenght), (total_lenght);

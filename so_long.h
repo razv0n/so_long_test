@@ -21,6 +21,14 @@
 #include "/usr/include/minilibx-linux/mlx.h"
 #include <stdio.h>
 
+enum e_map
+{
+    complete_wall,
+    only_one_exit,
+    atlist_one_collecter,
+    starting_position
+};
+
 typedef struct t_x_y
 {
     int x;
@@ -32,6 +40,25 @@ typedef struct width_heigh
     int img_width;
     int img_height;
 }t_wihe;
+
+typedef struct imgs
+{
+    void *img_player;
+    void *img_floor;
+    void *img_wall;
+    void *img_coin; 
+    void *img_exit;
+}t_imgs;
+
+typedef struct info
+{
+    t_imgs image;
+    t_wihe dimensions;
+    t_position position;
+    void *mlx;
+    void *mlx_new_win;
+}t_info;
+
 int lenght_of_map(char *str);
 void    check_is_rectangular(char **map);
 void    flood_fill(char **map);
@@ -45,7 +72,7 @@ int	    ft_strcmp(const char *s1, char *s2);
 void    free_map(char **map);
 int	        ft_strcmp(const char *s1, char *s2);
 int    ft_len(char *str);
-
+void    count_hight_width(char **map);
 
 
 #endif

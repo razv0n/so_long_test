@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:09:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/11 12:01:49 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/11 14:54:27 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,13 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
-
-void display_map(void *img_floor, void *img_wall, void *img_coin, void *img_exit, void *img_player)
+void display_map(t_info all)
 {
     int i;
     int j;
     void *mlx;
-    void *new_win
-    mlx = mlx_init();
-    new_win = mlx_new_window(mlx, , ,"so_long");
+    void *new_win;
+    
     i = 0;
     while (map[i])
     {
@@ -36,28 +34,37 @@ void display_map(void *img_floor, void *img_wall, void *img_coin, void *img_exit
         while (map[i][j])
         {
             if(map[i][j] == '0')
-                mlx_put_img_to_window(mlx, new_win,)
+                mlx_put_img_to_window(mlx, new_win, all->image->img_floor, );
             else if(map[i][j] == '1')
-                mlx_put
+                mlx_put_img_to_window(mlx, new_win, all->image->img_wall);
             else if(map[i][j] == 'C')
+                mlx_put_img_to_window(mlx, new_win, all->image->img_coin);
             else if(map[i][j] == 'E')
+                mlx_put_img_to_window(mlx, new_win, all->image->img_exit);
             else if(map[i][j] == 'P')
-        
-            j++:
+                mlx_put_img_to_window(mlx, new_win, all->image->img_player);  
+            j++;
         }
         i++;
     }
 }
 void display_window(char **map)
 {
-	void	*img_floor, *img_wall, *img_coin, *img_exit, *img_player;
-	void	*mlx;
-    void    *mlx_win;
+	t_info *all;
 
-        
-                img_floor = mlx_xpm_file_to_image(mlx, FLOOR_XPM);
-                img_wall = mlx_xpm_file_to_image(mlx, WALL_XPM);
-                img_player = mlx_xpm_file_to_image(mlx, PLAYER_LEFT_XPM);
-                img_exit = mlx_xpm_file_to_image(mlx, EXIT_CLOSED_XPM);
-                img_coin = mlx_xpm_file_to_image(mlx, COINS_XPM);
+    count_hight_width(map);
+    mlx = mlx_init();
+    all->image = malloc(sizeof(t_imgs));
+    if (!all->image)
+    {
+        free_map(map);
+        exit(1);
+    }
+    all->image->img_floor = mlx_xpm_file_to_image(mlx, FLOOR_XPM);
+    all->image->img_wall = mlx_xpm_file_to_image(mlx, WALL_XPM);
+    all->image->img_player = mlx_xpm_file_to_image(mlx, PLAYER_LEFT_XPM);
+    all->image->img_exit = mlx_xpm_file_to_image(mlx, EXIT_CLOSED_XPM);
+    all->image->img_coin = mlx_xpm_file_to_image(mlx, COINS_XPM);
+    display_map(all);
+    new_win = mlx_new_window(mlx, image->width, image->height, "so_long");
 }

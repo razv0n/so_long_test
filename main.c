@@ -1,13 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/11 13:50:47 by mfahmi            #+#    #+#             */
+/*   Updated: 2025/02/11 13:55:09 by mfahmi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 #include <string.h>
 #include <errno.h>
-enum e_map
-{
-    complete_wall,
-    only_one_exit,
-    atlist_one_collecter,
-    starting_position
-};
 
 void check_errors_of_map(char **map, char *str)
 {
