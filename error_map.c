@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:21:39 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/11 13:58:13 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/11 16:49:54 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    check_is_rectangular(char **map)
     while (map[i])
     {
         if (map[i + 1] == NULL)
-            lenght--;
+            lenght --;
         if (lenght != ft_len(map[i]))
         {
             free_map(map);
@@ -82,6 +82,7 @@ void    check_elemnts(char **map)
     count_P = 0;
     count_E = 0;
     count_C = 0;
+    
     while(map[i])
     {
         j = 0;
@@ -95,6 +96,7 @@ void    check_elemnts(char **map)
                 count_P++;
             else if (map[i][j] != '0' && map[i][j] != '1')
             {
+                printf("the i :%d the j : %d the char is %c\n",i, j ,map[i][j]);
                 free_map(map);
                 exit(ft_print("Error\nunknown elemnts\n", 2));
             }
@@ -108,7 +110,7 @@ void    check_elemnts(char **map)
 void    check_the_state_of_wall(char **map, char *str)
 {
     int (i), (j), (lenght), (total_lenght);
-    total_lenght = lenght_of_map() - 1;
+    total_lenght = lenght_of_map(str) - 1;
     lenght = ft_strlen(map[0]) - 1;
     i = 0;
     while(map[i])

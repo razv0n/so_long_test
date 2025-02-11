@@ -12,7 +12,8 @@
 # define PLAYER_BACK_XPM	"assets/sprites/player/back.xpm"
 # define OPEN_EXIT_XPM		"assets/sprites/open-exit.xpm"
 # define EXIT_CLOSED_XPM	"assets/sprites/exit-closed.xpm"
-
+# define IMG_HEIGHT			32
+# define IMG_WIDTH			32
 // #include "mlx.h"
 #include "get_next_line.h"
 #include <fcntl.h>
@@ -37,8 +38,8 @@ typedef struct t_x_y
 
 typedef struct width_heigh
 {
-    int img_width;
-    int img_height;
+    int width;
+    int height;
 }t_wihe;
 
 typedef struct imgs
@@ -52,9 +53,9 @@ typedef struct imgs
 
 typedef struct info
 {
-    t_imgs image;
-    t_wihe dimensions;
-    t_position position;
+    t_imgs *image;
+    t_wihe *dimensions;
+    t_position *position;
     void *mlx;
     void *mlx_new_win;
 }t_info;
@@ -72,7 +73,7 @@ int	    ft_strcmp(const char *s1, char *s2);
 void    free_map(char **map);
 int	        ft_strcmp(const char *s1, char *s2);
 int    ft_len(char *str);
-void    count_hight_width(char **map);
-
+void    count_hight_width(char **map, t_info *all);
+void display_window(char **map);
 
 #endif

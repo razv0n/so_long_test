@@ -1,14 +1,14 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-FUN = error_extension.c main.c error_map.c helper.c get_next_line.c get_next_line_utils.c free_map.c
+FUN =  display_window.c error_extension.c main.c error_map.c helper.c get_next_line.c get_next_line_utils.c free_map.c
 OBG = $(FUN:.c=.o)
 NAME = so_long
-# LINKING =  -lbsd display_window.c -L/usr/include/minilibx-linux -lmlx -lXext -lX11 -lm
+LINKING = -L/usr/include/minilibx-linux -lmlx -lXext -lX11 -lm
 
 all: $(NAME)
 
 $(NAME): $(OBG)
-	$(CC) $(CFLAGS) $^ -o $(NAME)
+	$(CC) $(CFLAGS) $^ $(LINKING) -o $(NAME)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^
 

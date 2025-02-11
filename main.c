@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:47 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/11 13:55:09 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/11 16:40:30 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int main(int ac, char **av)
         if (!map)
             return (-1);
         fd = open(av[1], O_RDWR);
+        // printf("strinf is :%s",av[1]);
         if (fd == -1)
             return (free(map), -1);
         i = 0;
@@ -51,6 +52,7 @@ int main(int ac, char **av)
         }
         map[i] = NULL;
         check_errors_of_map(map, av[1]);
+        display_window(map);
         close(fd);
         free_map(map);
     }
