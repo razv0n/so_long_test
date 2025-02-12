@@ -22,12 +22,14 @@
 #include "/usr/include/minilibx-linux/mlx.h"
 #include <stdio.h>
 
-enum e_map
+enum e_free_what_u_want
 {
-    complete_wall,
-    only_one_exit,
-    atlist_one_collecter,
-    starting_position
+    free_the_position,
+    free_the_map,
+    free_the_wihe,
+    free_the_img,
+    free_all_data,
+    free_t_info,
 };
 
 typedef struct t_x_y
@@ -58,22 +60,27 @@ typedef struct info
     t_position *position;
     void *mlx;
     void *mlx_new_win;
+    char **map;
+    int lenght_of_map;
+    char *name_of_map;
 }t_info;
 
 int lenght_of_map(char *str);
-void    check_is_rectangular(char **map);
-void    flood_fill(char **map);
+void    check_is_rectangular(t_info *all);
+void    flood_fill(t_info *all);
 int     ft_print(char   *str, int std);
 int      ft_len(char *str);
 void    display_error(int count_E, int count_C, int count_P);
-void    check_elemnts(char **map);
-void    check_the_state_of_wall(char **map, char *str);
+void    check_elemnts(t_info *all);
+void    check_the_state_of_wall(t_info *all);
 void    check_extension(char **str);
 int	    ft_strcmp(const char *s1, char *s2);
 void    free_map(char **map);
 int	        ft_strcmp(const char *s1, char *s2);
 int    ft_len(char *str);
-void    count_hight_width(char **map, t_info *all);
-void display_window(char **map);
-
+void    count_hight_width(t_info *all);
+void display_window(t_info *all);
+void    submit_data_mapp(t_info *all);
+void free_data(t_info *all);
+void    allocate_data(t_info **all, int lenght_of_map);
 #endif

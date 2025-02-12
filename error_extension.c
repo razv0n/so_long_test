@@ -6,29 +6,28 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:42 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/11 13:50:43 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/12 21:21:54 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "so_long.h"
-void    check_elemts(char **map)
+
+void    check_elemts(t_info *all)
 {
     int i;
     int j;
 
     i = 0;
     j = 0;
-    while (map[i])
+    while (all->map[i])
     {
         j = 0;
-        while(map[i][j])
+        while(all->map[i][j])
         {
-            if(map[i][j] == 'C' || map[i][j] == 'E' || map[i][j] == 'P')
+            if(all->map[i][j] == 'C' || all->map[i][j] == 'E' || all->map[i][j] == 'P')
             {
-                free_map(map);
-                perror("Error\n");
-                exit(1);                
+                free_data(all);
+                exit(ft_print("Error\none of elemnts can't be reach\n", 2));                
             }
             j++;
         }
@@ -50,38 +49,38 @@ void    check_extension(char **str)
         exit(ft_print("Error\n", 2));
 }
 
-void    flood_fill_aux(char **map, int i, int j)
+void    flood_fill_aux(t_info *all, int i, int j)
 {
-    if (i < 0 || j < 0  || !map[i] || !map[i][j] || map[i][j] == '1' || map[i][j] == 'F')
+    if (i < 0 || j < 0  || !all->map[i] || !all->map[i][j] || all->map[i][j] == '1' || all->map[i][j] == 'F')
         return;
-    map[i][j] = 'F';
-    flood_fill_aux(map, i + 1, j);
-    flood_fill_aux(map, i - 1, j);
-    flood_fill_aux(map, i, j + 1);
-    flood_fill_aux(map, i, j - 1);
+    all->map[i][j] = 'F';
+    flood_fill_aux(all, i + 1, j);
+    flood_fill_aux(all, i - 1, j);
+    flood_fill_aux(all, i, j + 1);
+    flood_fill_aux(all, i, j - 1);
 
 }
 
-void    flood_fill(char **map)
+void    flood_fill(t_info *all)
 {
     
     int i;
     int j;
 
     i = 0;
-    while (map[i])
+    while (all->map[i])
     {
         j = 0;
-        while(map[i][j])
+        while(all->map[i][j])
         {
-            if(map[i][j] == 'P')
+            if(all->map[i][j] == 'P')
                 break;
             j++;
         }
-        if(map[i][j] == 'P')
+        if(all->map[i][j] == 'P')
             break;        
         i++;
     }
-    flood_fill_aux(map, i, j);
-    check_elemts(map);
+    flood_fill_aux(all, i, j);
+    check_elemts(all);
 }

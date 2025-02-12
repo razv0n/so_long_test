@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/11 16:04:33 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/12 18:56:15 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,39 @@ int    ft_len(char *str)
         i++;
     return (i);
 }
-void    count_hight_width(char **map, t_info *all)
+void    count_hight_width(t_info *all)
 {
     int i;
 
     all->dimensions = malloc (sizeof(t_wihe));
     if (!all->dimensions)
     {
-        free_map(map);  //! u should using free here or find a solution to use struct
+        free_data(all);
         exit(1);
     }
     i = 0;
-    while (map[i])
+    while (all->map[i])
         i++;
     all->dimensions->width = i;
-    all->dimensions->height = ft_len(map[0]);
+    all->dimensions->height = ft_len(all->map[0]) - 1; //* -1 for the new line
+}
+void    submit_data_mapp(t_info *all)
+{
+        int fd, i;
+
+        fd = open(all->name_of_map, O_RDWR);
+        if (fd == -1)
+        {
+            free_data(all);
+            exit(1);
+        }
+        i = 0;
+        all->map[i] = get_next_line(fd);
+        while(all->map[i])
+        {
+            i++;
+            all->map[i] = get_next_line(fd);
+        }
+        all->map[i] = NULL;
+        close(fd);
 }
