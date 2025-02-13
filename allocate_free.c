@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:59:56 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/12 20:43:10 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/13 18:20:03 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void    allocate_data(t_info **all, int lenght_of_map)
     *all = malloc(sizeof(t_info));
     if (!*all)
         return (free(*all), exit(1));
+    (*all)->we_have_exit = false;
     (*all)->position = NULL;
     (*all)->dimensions = NULL;
     (*all)->image = NULL;

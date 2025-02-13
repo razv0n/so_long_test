@@ -14,14 +14,23 @@
 # define EXIT_CLOSED_XPM	"assets/sprites/exit-closed.xpm"
 # define IMG_HEIGHT			32
 # define IMG_WIDTH			32
-// #include "mlx.h"
+# define ESC                 65307
+#define KEY_w                119
+#define KEY_s                115
+#define KEY_a                97
+#define KEY_d                100
+#define KEY_up               65362
+#define KEY_down             65364 
+#define KEY_left             65361
+#define KEY_right            65363
+
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <stdlib.h>
 #include <math.h>
 #include "/usr/include/minilibx-linux/mlx.h"
 #include <stdio.h>
-
+#include <stdbool.h>
 enum e_free_what_u_want
 {
     free_the_position,
@@ -34,8 +43,8 @@ enum e_free_what_u_want
 
 typedef struct t_x_y
 {
-    int x;
-    int y;
+    int x; //* index i
+    int y; //* index j
 }t_position;
 
 typedef struct width_heigh
@@ -46,10 +55,13 @@ typedef struct width_heigh
 
 typedef struct imgs
 {
-    void *img_player;
+    void *img_player_front;
+    void *img_player_back;
+    void *img_player_right;
+    void *img_player_left;
     void *img_floor;
     void *img_wall;
-    void *img_coin; 
+    void *img_coin;
     void *img_exit;
 }t_imgs;
 
@@ -61,11 +73,13 @@ typedef struct info
     void *mlx;
     void *mlx_new_win;
     char **map;
-    int lenght_of_map;
     char *name_of_map;
+    int lenght_of_map;
+    int how_many_C;
+    bool we_have_exit;
 }t_info;
 
-int lenght_of_map(char *str);
+int lenght_of_map(  char *str);
 void    check_is_rectangular(t_info *all);
 void    flood_fill(t_info *all);
 int     ft_print(char   *str, int std);
@@ -83,4 +97,5 @@ void display_window(t_info *all);
 void    submit_data_mapp(t_info *all);
 void free_data(t_info *all);
 void    allocate_data(t_info **all, int lenght_of_map);
+void    move_player(t_info *all);
 #endif

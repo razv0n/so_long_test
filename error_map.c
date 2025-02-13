@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:21:39 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/12 18:58:08 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/13 13:53:18 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void    error_display(int count_E, int count_C, int count_P, t_info *all)
          free_data(all);
         exit(ft_print("Error\nin the position of player\n", 2));
     }
+    all->how_many_C = count_C; // *HERE save the value of the collectebrs to use it to open the exit
 }
 
 void    check_is_rectangular(t_info *all)
