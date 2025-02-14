@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:09:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/13 18:36:25 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 10:51:48 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,10 @@ void display_window(t_info *all)
     int i;
     int j;
     
-    i = j = 0;
-    count_hight_width(all);
-    all->image = malloc(sizeof(t_imgs));
-    if (!all->image)
-    {
-        free_data(all);
-        exit(1);
-    }
+    i = 0;
+    j = 0;
     all->mlx = mlx_init();
-    //  printf("the width os  :%d the hieght is : %d\n",all->dimensions->width, all->dimensions->height);
-    all->mlx_new_win = mlx_new_window(all->mlx,all->dimensions->height * IMG_HEIGHT, all->dimensions->width * IMG_WIDTH,"so_long");
+    all->mlx_new_win = mlx_new_window(all->mlx, all->dimensions->height * IMG_HEIGHT, all->dimensions->width * IMG_WIDTH, "so_long");
     all->image->img_floor = mlx_xpm_file_to_image(all->mlx, FLOOR_XPM, &i, &j);
     all->image->img_wall = mlx_xpm_file_to_image(all->mlx, WALL_XPM, &i, &j);
     all->image->img_player_front = mlx_xpm_file_to_image(all->mlx, PLAYER_FRONT_XPM,  &i, &j);

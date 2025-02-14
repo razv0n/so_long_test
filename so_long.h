@@ -25,6 +25,7 @@
 #define KEY_right            65363
 
 #include "get_next_line.h"
+#include "ft_printf/ft_printf.h"
 #include <fcntl.h>
 #include <stdlib.h>
 #include <math.h>
@@ -76,26 +77,33 @@ typedef struct info
     char *name_of_map;
     int lenght_of_map;
     int how_many_C;
+    int moves_count;
     bool we_have_exit;
 }t_info;
 
 int lenght_of_map(  char *str);
+int    ft_len(char *str);
+int      ft_len(char *str);
+int     ft_print(char   *str, int std);
+int	    ft_strcmp(const char *s1, char *s2);
+int	        ft_strcmp(const char *s1, char *s2);
 void    check_is_rectangular(t_info *all);
 void    flood_fill(t_info *all);
-int     ft_print(char   *str, int std);
-int      ft_len(char *str);
 void    display_error(int count_E, int count_C, int count_P);
 void    check_elemnts(t_info *all);
 void    check_the_state_of_wall(t_info *all);
 void    check_extension(char **str);
-int	    ft_strcmp(const char *s1, char *s2);
 void    free_map(char **map);
-int	        ft_strcmp(const char *s1, char *s2);
-int    ft_len(char *str);
 void    count_hight_width(t_info *all);
 void display_window(t_info *all);
 void    submit_data_mapp(t_info *all);
 void free_data(t_info *all);
 void    allocate_data(t_info **all, int lenght_of_map);
 void    move_player(t_info *all);
+void free_mlx(t_info *all);
+void cheak_exit_game(t_info *all);
+void    move_down(t_info *all);
+void    move_up(t_info *all);
+void    move_left(t_info *all);
+void    move_right(t_info *all);
 #endif

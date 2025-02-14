@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:47 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/12 19:11:57 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 10:52:05 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void check_errors_of_map(t_info *all)
     flood_fill(all);
     free_map(all->map);
     all->map = malloc((all->lenght_of_map + 1) * sizeof(char *));
+    if (!all->map)
+    {
+        free_data(all);
+        exit(1);
+    }
     submit_data_mapp(all);
 }
 
@@ -41,8 +46,9 @@ int main(int ac, char **av)
         all->lenght_of_map = lenght_of_map(av[1]);
         submit_data_mapp(all);
         check_errors_of_map(all);
-        // count_hight_width(all);
+        count_hight_width(all);
         display_window(all);
+        free_mlx(all);
         free_data(all);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/12 18:56:15 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 10:03:58 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,6 @@ void    count_hight_width(t_info *all)
 {
     int i;
 
-    all->dimensions = malloc (sizeof(t_wihe));
-    if (!all->dimensions)
-    {
-        free_data(all);
-        exit(1);
-    }
     i = 0;
     while (all->map[i])
         i++;
