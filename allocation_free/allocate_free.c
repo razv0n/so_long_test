@@ -6,11 +6,11 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:59:56 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/14 10:53:32 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 16:14:01 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void    allocate_data(t_info **all, int lenght_of_map)
 {

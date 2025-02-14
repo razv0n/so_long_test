@@ -6,11 +6,11 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/14 10:03:58 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 16:14:16 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int ft_print(char *str, int std)
 {

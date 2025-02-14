@@ -6,11 +6,11 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:47:10 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/14 11:58:40 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 16:14:13 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void cheak_exit_game(t_info *all)
 {

@@ -6,11 +6,11 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:21:39 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/13 13:53:18 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 16:41:12 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void    error_display(int count_E, int count_C, int count_P, t_info *all)
 {
@@ -62,7 +62,7 @@ int lenght_of_map(char *str)
     if (fd == -1)
     {
         ft_print("Error\nthe file not found\n", 2);
-        return (-1);
+        exit (1);
     }
     line = get_next_line(fd);
     lenght = 0;

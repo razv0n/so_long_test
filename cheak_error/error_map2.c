@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_extension.c                                  :+:      :+:    :+:   */
+/*   error_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:42 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/12 21:21:54 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 16:39:14 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void    check_elemts(t_info *all)
 {
@@ -34,18 +34,23 @@ void    check_elemts(t_info *all)
         i++;
     }   
 }
-void    check_extension(char **str)
+void    check_extension(char *str)
 {
     int i;
+    int fd;
 
     i = 0;
-    while (str[1][i])
+    fd = open(str, O_RDWR);
+    if (fd == -1)
+        exit(ft_print("Error\nthe file not found\n", 1));
+    close(fd);
+    while (str[i])
     {
-        if(str[1][i] == '.')
+        if(str[i] == '.')
             break;
         i++;
     }
-    if(!str[1][i] || !i || ft_strcmp(".ber", str[1] + i))
+    if(!str[i] || !i || ft_strcmp(".ber", str + i))
         exit(ft_print("Error\n", 2));
 }
 
@@ -83,4 +88,25 @@ void    flood_fill(t_info *all)
     }
     flood_fill_aux(all, i, j);
     check_elemts(all);
+}
+
+void check_errors_of_map(t_info *all)
+{
+    if (!all->map[0])
+    {
+        free_data(all);
+        exit(1);
+    }
+    check_is_rectangular(all);
+    check_elemnts(all);
+    check_the_state_of_wall(all);
+    flood_fill(all);
+    free_map(all->map);
+    all->map = malloc((all->lenght_of_map + 1) * sizeof(char *));
+    if (!all->map)
+    {
+        free_data(all);
+        exit(1);
+    }
+    submit_data_mapp(all);
 }

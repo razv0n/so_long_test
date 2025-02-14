@@ -6,11 +6,11 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:09:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/14 10:51:48 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 16:13:10 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void display_map(t_info *all)
 {

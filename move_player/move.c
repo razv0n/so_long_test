@@ -6,11 +6,11 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:22:11 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/14 11:04:36 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/14 16:14:33 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void    move_down(t_info *all)
 {

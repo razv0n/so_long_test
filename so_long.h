@@ -24,7 +24,7 @@
 #define KEY_left             65361
 #define KEY_right            65363
 
-#include "get_next_line.h"
+#include "get_next_line/get_next_line.h"
 #include "ft_printf/ft_printf.h"
 #include <fcntl.h>
 #include <stdlib.h>
@@ -92,7 +92,7 @@ void    flood_fill(t_info *all);
 void    display_error(int count_E, int count_C, int count_P);
 void    check_elemnts(t_info *all);
 void    check_the_state_of_wall(t_info *all);
-void    check_extension(char **str);
+void    check_extension(char *str);
 void    free_map(char **map);
 void    count_hight_width(t_info *all);
 void display_window(t_info *all);
@@ -101,6 +101,7 @@ void free_data(t_info *all);
 void    allocate_data(t_info **all, int lenght_of_map);
 void    move_player(t_info *all);
 void free_mlx(t_info *all);
+void check_errors_of_map(t_info *all);
 void cheak_exit_game(t_info *all);
 void    move_down(t_info *all);
 void    move_up(t_info *all);
