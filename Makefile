@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-FUN =  ./move_player/move.c ./allocation_free/allocate_free.c ./show_window/display_window.c ./cheak_error/error_map2.c ./main/main.c ./cheak_error/error_map.c ./helper/helper.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ./move_player/hook.c
+FUN =  ./move_player/move.c ./allocation_free/allocate_free.c ./show_window/display_window.c ./cheak_error/error_map2.c ./main/main.c ./cheak_error/error_map.c ./helper/helper.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ./move_player/hook.c ./show_window/start_window.c 
 OBG = $(FUN:.c=.o)
 NAME = so_long
 
@@ -70,7 +70,7 @@ clean:
 	rm -rf $(OBG)
 fclean : clean
 	@echo "$(CYAN)🗑️ Removing executable...$(RESET)"
-	rm -rf $(NAME)
+	rm -rf $(NAME) BANNER
 re : fclean all
 
 BANNER:

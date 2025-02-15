@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:22:11 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/14 16:14:33 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/15 21:53:43 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    move_down(t_info *all)
         cheak_exit_game(all);
         all->map[all->position->x][all->position->y] = 'E';
         all->we_have_exit = false;
-        mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit, all->position->y * IMG_WIDTH , all->position->x * IMG_HEIGHT);
+        mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_close, all->position->y * IMG_WIDTH , all->position->x * IMG_HEIGHT);
     }
     else
     {
@@ -54,7 +54,7 @@ void    move_up(t_info *all)
     if (all->we_have_exit && all->map[all->position->x - 1][all->position->y] != 'E')
     {
         all->map[all->position->x][all->position->y] = 'E';
-        mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit, all->position->y * IMG_WIDTH , all->position->x * IMG_HEIGHT);
+        mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_close, all->position->y * IMG_WIDTH , all->position->x * IMG_HEIGHT);
         all->we_have_exit = false;
     }
     else
@@ -82,7 +82,7 @@ void    move_left(t_info *all)
     {
         cheak_exit_game(all);
         all->map[all->position->x][all->position->y] = 'E';
-        mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit, all->position->y * IMG_WIDTH , all->position->x * IMG_HEIGHT);
+        mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_close, all->position->y * IMG_WIDTH , all->position->x * IMG_HEIGHT);
         all->we_have_exit = false;
     }
     else
@@ -110,7 +110,7 @@ void    move_right(t_info *all)
     {
         cheak_exit_game(all);
         all->map[all->position->x][all->position->y] = 'E';
-        mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit, all->position->y * IMG_WIDTH , all->position->x * IMG_HEIGHT);
+        mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_close, all->position->y * IMG_WIDTH , all->position->x * IMG_HEIGHT);
         all->we_have_exit = false;
     }
     else

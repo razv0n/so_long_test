@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:47:10 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/14 16:14:13 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/15 18:38:40 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,11 @@ void cheak_exit_game(t_info *all)
     }
 }
 
-int    free_all(t_info *all)
-{
-        free_mlx(all);
-        free_data(all);
-        exit(ft_print("exit game\n", 1));
-}
 int keycode(int key, t_info *all)
 {
     if (key == ESC)
-    {
-        free_mlx(all);
-        free_data(all);
-        exit(ft_print("Exit game\n", 2));
-    }
-    if (key == KEY_w || key == KEY_up)
+        free_all(all);
+    else if (key == KEY_w || key == KEY_up)
         move_up(all);
     else if (key == KEY_s || key == KEY_down)
         move_down(all);
@@ -45,6 +35,8 @@ int keycode(int key, t_info *all)
         move_left(all);
     else if (key == KEY_d || key == KEY_right)
         move_right(all);
+    if (!all->how_many_C)
+        mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_open, all->position_exit->y * IMG_WIDTH , all->position_exit->x * IMG_HEIGHT);
     return (0);
 }
 void    move_player(t_info *all)
