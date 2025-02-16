@@ -1,46 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   hook_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:47:10 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/16 18:11:05 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/16 21:22:06 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
-void cheak_exit_game(t_info *all)
+void cheak_exit_game_bonus(t_info *all)
 {
     if (!all->how_many_C)
     {
         ft_printf("move : %d\n", ++all->moves_count);
-        free_mlx(all);
-        free_data(all);
+        free_mlx_bonus(all);
+        free_data_bonus(all);
         exit(ft_print("congrate u won\n", 1));
     }
 }
 
-int keycode(int key, t_info *all)
+int keycod(int key, t_info *all)
 {
     if (key == ESC)
-        free_all(all);
+        free_all_bonus(all);
     else if (key == KEY_w || key == KEY_up)
-        move_up(all);
+    {
+        all->deriction = UP_D;
+        move_up_bonus(all);
+    }
     else if (key == KEY_s || key == KEY_down)
-        move_down(all);
+    {
+        all->deriction = DOWN_D;
+        move_down_bonus(all);
+    }
     else if (key == KEY_a || key == KEY_left)
-        move_left(all);
+    {
+        all->deriction = LEFT_D;
+        move_left_bonus(all);
+    }
     else if (key == KEY_d || key == KEY_right)
-        move_right(all);
+    {
+        all->deriction = RIGHT_D;
+        move_right_bonus(all);
+    }
     // if (!all->how_many_C)
     //     mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_open, all->position_exit->y * IMG_WIDTH , all->position_exit->x * IMG_HEIGHT);
     return (0);
 }
-void    move_player(t_info *all)
+void    move_player_bonus(t_info *all)
 {
-    mlx_hook(all->mlx_new_win, 2, 1L<<0, keycode, all);
-    mlx_hook(all->mlx_new_win, 17, 0 ,free_all, all);
+    mlx_loop_hook(all->mlx, animation, all);
+    mlx_hook(all->mlx_new_win, 2, 1L<<0, keycod, all);
+    mlx_hook(all->mlx_new_win, 17, 0 ,free_all_bonus, all);
 }

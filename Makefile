@@ -14,6 +14,8 @@ CHEAK_ERROR_DIR = cheak_error
 MAIN_DIR = main
 HELPER_DIR = helper
 GET_NEXT_LINE_DIR = get_next_line
+FUN_BNS = ./allocation_free/allocate_free.c ./bonus/move_player_bonus/move_bonus.c ./bonus/allocation_free_bonus/allocate_free_bonus.c ./cheak_error/error_map2.c ./cheak_error/error_map.c ./helper/helper.c  ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ./show_window/start_window.c  ./bonus/show_window_bonus/display_window_bonus.c ./cheak_error/error_map2.c ./bonus/main_bonus/main_bonus.c ./cheak_error/error_map.c ./helper/helper.c  ./bonus/move_player_bonus/hook_bonus.c ./show_window/start_window.c 
+OGJ_BNS = $(FUN_BNS:.c=.o)
 
 GREEN = \033[32m
 RESET = \033[0m
@@ -33,6 +35,7 @@ $(NAME): $(OBG) $(LIBFTPRINTF)
 
 $(LIBFTPRINTF):
 	make -C $(LIBFTPRINTF_DIR)
+
 %.o: %.c
 	@echo "$(BLUE)Compiling $<...$(RESET)"
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -65,13 +68,36 @@ $(LIBFTPRINTF):
 	@echo "$(BLUE)Compiling $<...$(RESET)"
 	$(CC) $(CFLAGS) -c $< -o $@
 
+%.o: bonus/move_player_bonus/%.c
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: bonus/allocation_free_bonus/%.c
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: bonus/main_bonus/%.c
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: bonus/show_window_bonus/%.c
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: BANNER $(OGJ_BNS) $(LIBFTPRINTF)
+	@echo "$(BLUE)Compiling bonus project...$(RESET)"
+	$(CC) $(CFLAGS) $^ $(LINKING) -o so_long_bonus
+	@echo "$(GREEN)✅ Bonus Build Successful!$(RESET)"
+
 clean:
 	@echo "$(CYAN)🧹 Cleaning object files...$(RESET)"
-	rm -rf $(OBG)
-fclean : clean
+	rm -rf $(OBG) $(OGJ_BNS)
+
+fclean: clean
 	@echo "$(CYAN)🗑️ Removing executable...$(RESET)"
-	rm -rf $(NAME) BANNER
-re : fclean all
+	rm -rf $(NAME) so_long_bonus BANNER
+
+re: fclean all
 
 BANNER:
 	@sleep 0.2
@@ -98,4 +124,4 @@ BANNER:
 	@echo "		$(RED)❤️  Enjoy using the project! ❤️$(RESET)"
 	@touch BANNER
 
-.PHONY: re fclean clean all BANNER
+.PHONY: re fclean clean all BANNER bonus
