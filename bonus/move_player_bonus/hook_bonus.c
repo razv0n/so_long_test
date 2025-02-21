@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:47:10 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/16 21:22:06 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/21 17:08:01 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@ void cheak_exit_game_bonus(t_info *all)
     if (!all->how_many_C)
     {
         ft_printf("move : %d\n", ++all->moves_count);
-        free_mlx_bonus(all);
-        free_data_bonus(all);
-        exit(ft_print("congrate u won\n", 1));
+        free_all_bonus(all, WIN_GAME);
     }
 }
 
 int keycod(int key, t_info *all)
 {
     if (key == ESC)
-        free_all_bonus(all);
+        free_all_bonus(all, EXIT_GAME);
     else if (key == KEY_w || key == KEY_up)
     {
         all->deriction = UP_D;
@@ -53,7 +51,7 @@ int keycod(int key, t_info *all)
 }
 void    move_player_bonus(t_info *all)
 {
-    mlx_loop_hook(all->mlx, animation, all);
     mlx_hook(all->mlx_new_win, 2, 1L<<0, keycod, all);
+    mlx_loop_hook(all->mlx, animate, all);
     mlx_hook(all->mlx_new_win, 17, 0 ,free_all_bonus, all);
 }

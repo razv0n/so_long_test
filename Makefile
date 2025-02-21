@@ -14,7 +14,7 @@ CHEAK_ERROR_DIR = cheak_error
 MAIN_DIR = main
 HELPER_DIR = helper
 GET_NEXT_LINE_DIR = get_next_line
-FUN_BNS = ./allocation_free/allocate_free.c ./bonus/move_player_bonus/move_bonus.c ./bonus/allocation_free_bonus/allocate_free_bonus.c ./cheak_error/error_map2.c ./cheak_error/error_map.c ./helper/helper.c  ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ./show_window/start_window.c  ./bonus/show_window_bonus/display_window_bonus.c ./cheak_error/error_map2.c ./bonus/main_bonus/main_bonus.c ./cheak_error/error_map.c ./helper/helper.c  ./bonus/move_player_bonus/hook_bonus.c ./show_window/start_window.c 
+FUN_BNS = ./bonus/anim/animation_player.c ./allocation_free/allocate_free.c ./bonus/allocation_free_bonus/add_enemy.c ./bonus/move_player_bonus/move_bonus.c ./bonus/allocation_free_bonus/allocate_free_bonus.c ./bonus/cheak_error_bonus/error_map2_bonus.c ./bonus/cheak_error_bonus/error_map_bonus.c  ./bonus/helper_bonus/helper_bonus.c   ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ./bonus/show_window_bonus/start_window_bonus.c  ./bonus/show_window_bonus/display_window_bonus.c  ./bonus/main_bonus/main_bonus.c  ./helper/helper.c  ./bonus/move_player_bonus/hook_bonus.c ./show_window/start_window.c ./cheak_error/error_map.c ./cheak_error/error_map2.c
 OGJ_BNS = $(FUN_BNS:.c=.o)
 
 GREEN = \033[32m
@@ -81,6 +81,18 @@ $(LIBFTPRINTF):
 	$(CC) $(CFLAGS) -c $< -o $@
 
 %.o: bonus/show_window_bonus/%.c
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: bonus/anim/%.c
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: bonus/helper_bonus/%.c
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: bonus/cheak_error_bonus/%.c
 	@echo "$(BLUE)Compiling $<...$(RESET)"
 	$(CC) $(CFLAGS) -c $< -o $@
 

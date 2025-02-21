@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_map.c                                        :+:      :+:    :+:   */
+/*   error_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:21:39 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/20 16:11:20 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/21 16:55:29 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
-void    error_display(int count_E, int count_C, int count_P, t_info *all)
+void    error_display_bonus(int count_E, int count_C, int count_P, t_info *all)
 {
     if (count_E != 1)
     {
-        free_data(all);
+        free_data_bonus(all);
         exit(ft_print("Error\nin the exit\n", 2));
     }
     else if (count_C == 0)
     {
-         free_data(all);
+         free_data_bonus(all);
         exit(ft_print("Error\nin the collecter\n", 2));
     }
     else if (count_P != 1)
     {
-         free_data(all);
+         free_data_bonus(all);
         exit(ft_print("Error\nin the position of player\n", 2));
     }
-    all->how_many_C = count_C; // *HERE save the value of the collectebrs to use it to open the exit
+    all->how_many_C = count_C;
 }
 
-void    check_is_rectangular(t_info *all)
+void    check_is_rectangular_bonus(t_info *all)
 {
     int lenght;
     int i;
@@ -45,38 +45,14 @@ void    check_is_rectangular(t_info *all)
             lenght --;
         if (lenght != ft_len(all->map[i]))
         {
-            free_data(all);
+            free_data_bonus(all);
             exit(ft_print("Error\nthe map is not rectanglar\n", 2));
         }
         i++;
     }
 }
 
-int lenght_of_map(char *str)
-{
-    int fd;
-    char *line;
-    int lenght;
-
-    fd = open(str, O_RDWR);
-    if (fd == -1)
-    {
-        ft_print("Error\nthe file not found\n", 2);
-        exit (1);
-    }
-    line = get_next_line(fd);
-    lenght = 0;
-    while (line)
-    {
-        lenght++;
-        free(line);
-        line = get_next_line(fd);
-    }
-    close(fd);
-    return (lenght);
-}
-
-void    check_elemnts(t_info *all)
+void    check_elemnts_bonus(t_info *all)
 {
     int (count_E), (count_C), (count_P), (i), (j);
     i = 0;
@@ -95,19 +71,21 @@ void    check_elemnts(t_info *all)
                 count_E++;
             else if (all->map[i][j] == 'P')
                 count_P++;
-            else if (all->map[i][j] != '0' && all->map[i][j] != '1' && all->map[i][j] != '\n')
+            else if (all->map[i][j] == 'O')
+                all->how_many_O++;
+            else if (all->map[i][j] != '0' && all->map[i][j] != '1' && all->map[i][j] != '\n' && all->map[i][j] != 'O')
             {
-                free_data(all);
+                free_data_bonus(all);
                 exit(ft_print("Error\nunknown elemnts\n", 2));
             }
             j++;
         }
         i++;
     }
-    error_display(count_E, count_C, count_P, all);
+    error_display_bonus(count_E, count_C, count_P, all);
 }
 
-void    check_the_state_of_wall(t_info *all)
+void    check_the_state_of_wall_bonus(t_info *all)
 {
     int (i), (j), (lenght), (total_lenght);
     total_lenght = lenght_of_map(all->name_of_map) - 1;
@@ -122,7 +100,7 @@ void    check_the_state_of_wall(t_info *all)
             {
                 if (all->map[i][j] != '1' && all->map[i][j] != '\n')
                 {
-                    free_data(all);
+                    free_data_bonus(all);
                     exit(ft_print("Error\nstate of wall\n", 2));
                 }
             }
@@ -132,7 +110,7 @@ void    check_the_state_of_wall(t_info *all)
                     break;
                 else
                 {
-                    free_data(all);
+                    free_data_bonus(all);
                     exit(ft_print("Error\nstate of wall\n", 2));
                 }
             }
@@ -141,3 +119,4 @@ void    check_the_state_of_wall(t_info *all)
         i++;
     }
 }
+
