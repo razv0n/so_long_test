@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:42 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/21 15:39:52 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/22 09:21:13 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    check_elemts_bonus(t_info *all)
 
 void    flood_fill_aux_bonus(t_info *all, int i, int j)
 {
-    if (i < 0 || j < 0  || !all->map[i] || !all->map[i][j] || all->map[i][j] == '1' || all->map[i][j] == 'F' || all->map[i][j] == 'O')
+    if (i < 0 || j < 0  || !all->map[i] || !all->map[i][j] || all->map[i][j] == '1' || all->map[i][j] == 'F')
         return;
     all->map[i][j] = 'F';
     flood_fill_aux_bonus(all, i + 1, j);

@@ -14,7 +14,7 @@ CHEAK_ERROR_DIR = cheak_error
 MAIN_DIR = main
 HELPER_DIR = helper
 GET_NEXT_LINE_DIR = get_next_line
-FUN_BNS = ./bonus/anim/animation_player.c ./allocation_free/allocate_free.c ./bonus/allocation_free_bonus/add_enemy.c ./bonus/move_player_bonus/move_bonus.c ./bonus/allocation_free_bonus/allocate_free_bonus.c ./bonus/cheak_error_bonus/error_map2_bonus.c ./bonus/cheak_error_bonus/error_map_bonus.c  ./bonus/helper_bonus/helper_bonus.c   ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ./bonus/show_window_bonus/start_window_bonus.c  ./bonus/show_window_bonus/display_window_bonus.c  ./bonus/main_bonus/main_bonus.c  ./helper/helper.c  ./bonus/move_player_bonus/hook_bonus.c ./show_window/start_window.c ./cheak_error/error_map.c ./cheak_error/error_map2.c
+FUN_BNS = ./bonus/anim/animation_player.c ./bonus/move_player_bonus/move_enemy.c ./allocation_free/allocate_free.c ./bonus/allocation_free_bonus/add_enemy.c ./bonus/move_player_bonus/move_bonus.c ./bonus/allocation_free_bonus/allocate_free_bonus.c ./bonus/cheak_error_bonus/error_map2_bonus.c ./bonus/cheak_error_bonus/error_map_bonus.c  ./bonus/helper_bonus/helper_bonus.c   ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ./bonus/show_window_bonus/start_window_bonus.c  ./bonus/show_window_bonus/display_window_bonus.c  ./bonus/main_bonus/main_bonus.c  ./helper/helper.c  ./bonus/move_player_bonus/hook_bonus.c ./show_window/start_window.c ./cheak_error/error_map.c ./cheak_error/error_map2.c
 OGJ_BNS = $(FUN_BNS:.c=.o)
 
 GREEN = \033[32m
@@ -26,7 +26,7 @@ BLUE = \033[34m
 MAGENTA = \033[35m
 CYAN = \033[36m
 
-all: BANNER $(NAME)
+all:  $(NAME)
 
 $(NAME): $(OBG) $(LIBFTPRINTF)
 	@echo "$(BLUE)Compiling project...$(RESET)"

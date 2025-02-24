@@ -1,8 +1,6 @@
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
-
-
 # define WALL_XPM			"assets/sprites/wall.xpm"
 # define FLOOR_XPM			"assets/sprites/floor.xpm"
 # define COINS_XPM			"assets/sprites/coin-bag.xpm"
@@ -12,8 +10,8 @@
 # define PLAYER_BACK_XPM	"assets/sprites/player/semi_back.xpm"
 # define OPEN_EXIT_XPM        "assets/sprites/open-exit.xpm"
 # define EXIT_CLOSED_XPM	"assets/sprites/exit-closed.xpm"
-# define START_XPM          "assets/sprites/start/start.xpm"
-# define START_EXIT_XPM     "assets/sprites/start/exit_game.xpm"
+# define START_XPM          "assets/sprites/start/START_1.xpm"
+# define START_EXIT_XPM     "assets/sprites/start/EXIT_1.xpm"
 # define IMG_HEIGHT			32
 # define IMG_WIDTH			32
 # define ESC                 65307
@@ -35,14 +33,11 @@
 #include "/usr/include/minilibx-linux/mlx.h"
 #include <stdio.h>
 #include <stdbool.h>
-enum e_free_what_u_want
+
+enum e_elemnt
 {
-    free_the_position,
-    free_the_map,
-    free_the_wihe,
-    free_the_img,
-    free_all_data,
-    free_t_info,
+    EXIT_E = 10,
+    COINS_E,
 };
 
 typedef struct t_x_y
@@ -70,7 +65,6 @@ typedef struct imgs
     void  *img_start;
     void  *img_start_exit;
     void *img_exit_close;
-    void *img_exit_open;
 }t_imgs;
 
 typedef struct info
@@ -86,7 +80,7 @@ typedef struct info
     int lenght_of_map;
     int how_many_C;
     int moves_count;
-    bool we_have_exit;
+    int prev_elemnt;
     bool exit_game;
 }t_info;
 
@@ -118,5 +112,6 @@ void    move_down(t_info *all);
 void    move_up(t_info *all);
 void    move_left(t_info *all);
 void    move_right(t_info *all);
+void    init_data(t_info *all);
 
 #endif

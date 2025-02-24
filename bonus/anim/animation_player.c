@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:04:49 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/21 17:07:27 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/22 10:06:54 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,34 @@ int animation_enemy(t_info *all)
     {
         while (i < all->how_many_O)
         {
-            if (state_1 % 2 == 0)
-                mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_right1, all->position_o[i].y * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
+            if (all->direction_o[i] == RIGHT_D)
+            {
+                if (state_1 % 2 == 0)
+                    mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_right2, all->position_o[i].y  * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
+                else
+                    mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_right1, all->position_o[i].y * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
+            }
+            else if (all->direction_o[i] == LEFT_D)
+            {
+                  if (state_1 % 2 == 0)
+                    mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_left2, all->position_o[i].y  * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
+                else
+                    mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_left1, all->position_o[i].y * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
+            }
+            else if (all->direction_o[i] == UP_D)
+            {
+                  if (state_1 % 2 == 0)
+                    mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_up2, all->position_o[i].y  * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
+                else
+                    mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_up1, all->position_o[i].y * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
+            }
             else
-                mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_right2, all->position_o[i].y  * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
-            // printf("the y  %d the x: %d how many O : %d\n",all->position_o[i].y , all->position_o[i].x, all->how_many_O);
+            {
+                  if (state_1 % 2 == 0)
+                    mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_down2, all->position_o[i].y  * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
+                else
+                    mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_enemy_down1, all->position_o[i].y * IMG_WIDTH , all->position_o[i].x * IMG_HEIGHT);
+            }
             i++;
         }
         state_1++;

@@ -34,15 +34,15 @@ void    add_images_bonus(t_info *all)
     all->image->img_enemy_up2 = mlx_xpm_file_to_image(all->mlx, ENEMY_UP_2, &i, &j);
     all->image->img_enemy_left1 = mlx_xpm_file_to_image(all->mlx, ENEMY_LEFT_1, &i, &j);
     all->image->img_enemy_left2 = mlx_xpm_file_to_image(all->mlx, ENEMY_LEFT_2, &i, &j);
+    all->image->img_enemy_right2 = mlx_xpm_file_to_image(all->mlx, ENEMY_RIGHT_2, &i, &j);
     all->image->img_enemy_right1 = mlx_xpm_file_to_image(all->mlx, ENEMY_RIGHT_1, &i, &j);
-    all->image->coin_power = mlx_xpm_file_to_image(all->mlx, COINS_POWER, &i, &j);
+    all->image->img_str = mlx_xpm_file_to_image(all->mlx, STR_WIN, &i, &j);
 }
 
 void display_map_bonus(t_info *all)
 {
-    int j, index_enemy,index_c, i = 0;
+    int j, index_enemy, i = 0;
     index_enemy = 0;
-    index_c = 0;
     while (all->map[i])
     {
         j = 0;
@@ -53,13 +53,7 @@ void display_map_bonus(t_info *all)
             else if(all->map[i][j] == '1')
                 mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_wall, j * IMG_WIDTH , i * IMG_HEIGHT);
             else if(all->map[i][j] == 'C')
-            {
-                if(index_c % 2)
                     mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_coin, j * IMG_WIDTH , i * IMG_HEIGHT);
-                else
-                    mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->coin_power, j * IMG_WIDTH , i * IMG_HEIGHT);
-                index_c++;
-            }
             else if(all->map[i][j] == 'E')
             {
                 mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_close, j * IMG_WIDTH , i * IMG_HEIGHT);
@@ -71,11 +65,9 @@ void display_map_bonus(t_info *all)
                 all->position[PLAYER]->x =  i;
                 all->position[PLAYER]->y =  j;
                 all->deriction = RIGHT_D;
-                // animation_player(all, x , y);
             }
             else if (all->map[i][j] == 'O')
             {
-                // add_enemy(all, i, j, index_enemy);
                 all->position_o[index_enemy].x = i;
                 all->position_o[index_enemy].y = j;
                 index_enemy++;

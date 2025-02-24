@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:22:11 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/21 17:07:52 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/22 18:47:05 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ void    move_down_bonus(t_info *all)
         mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_floor, all->position[PLAYER]->y * IMG_WIDTH , all->position[PLAYER]->x * IMG_HEIGHT);
     }
     all->map[++all->position[PLAYER]->x][all->position[PLAYER]->y] = 'P';
-    // animation_player(all);
-    ft_printf("move : %d\n", ++all->moves_count);
+    str_window(all);
 }
 
 void    move_up_bonus(t_info *all)
@@ -66,8 +65,7 @@ void    move_up_bonus(t_info *all)
         mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_floor, all->position[PLAYER]->y * IMG_WIDTH , all->position[PLAYER]->x * IMG_HEIGHT);
     }
     all->map[--all->position[PLAYER]->x][all->position[PLAYER]->y] = 'P';
-    // animation_player(all);    
-    ft_printf("move : %d\n", ++all->moves_count);
+    str_window(all);
 }
 
 void    move_left_bonus(t_info *all)
@@ -95,8 +93,7 @@ void    move_left_bonus(t_info *all)
         mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_floor, all->position[PLAYER]->y * IMG_WIDTH , all->position[PLAYER]->x * IMG_HEIGHT);
     }
     all->map[all->position[PLAYER]->x][--all->position[PLAYER]->y] = 'P';
-    // animation_player(all);
-    ft_printf("move : %d\n", ++all->moves_count);
+    str_window(all);
 }
 
 void    move_right_bonus(t_info *all)
@@ -124,6 +121,5 @@ void    move_right_bonus(t_info *all)
         mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_floor, all->position[PLAYER]->y * IMG_WIDTH , all->position[PLAYER]->x * IMG_HEIGHT);
     }
     all->map[all->position[PLAYER]->x][++all->position[PLAYER]->y] = 'P';
-    // animation_player(all);
-    ft_printf("move : %d\n", ++all->moves_count);
+    str_window(all);
 }

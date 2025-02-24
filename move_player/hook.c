@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:47:10 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/16 18:11:05 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/24 09:42:42 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int keycode(int key, t_info *all)
         move_left(all);
     else if (key == KEY_d || key == KEY_right)
         move_right(all);
-    // if (!all->how_many_C)
-    //     mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_open, all->position_exit->y * IMG_WIDTH , all->position_exit->x * IMG_HEIGHT);
     return (0);
 }
 void    move_player(t_info *all)

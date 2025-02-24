@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:10:37 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/17 16:45:51 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/22 18:47:23 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,57 @@ void    count_hight_width_bonus(t_info *all)
         i++;
     all->dimensions->width = i;
     all->dimensions->height = ft_len(all->map[0]) - 1; //* -1 for the new line
+}
+static int	count_nm(long n)
+{
+	int	count;
+
+	count = 1;
+	if (n < 0)
+	{
+		count++;
+		n = -n;
+	}
+	while (n > 9)
+	{
+		n /= 10;
+		count++;
+	}
+	return (count);
+}
+
+char	*ft_itoa(int nm)
+{
+	char	*str;
+	int		i;
+	int		is_neg;
+	long	n;
+
+	n = nm;
+	i = count_nm(n) - 1;
+	is_neg = 0;
+	str = malloc((i + 2) * sizeof(char));
+	if (!str)
+		return (NULL);
+	str[i + 1] = '\0';
+	if (n < 0)
+	{
+		str[is_neg++] = '-';
+		n = -n;
+	}
+	while (i >= is_neg)
+	{
+		str[i] = (n % 10) + 48;
+		n /= 10;
+		i--;
+	}
+	return (str);
+}
+void    str_window(t_info *all)
+{
+    char *str;
+    str = ft_itoa(++all->moves_count);
+    mlx_put_image_to_window(all->mlx,  all->mlx_new_win, all->image->img_str, 0 , 0);
+    mlx_string_put (all->mlx, all->mlx_new_win, 20, 15, 0x000000, str);
+    free(str);
 }

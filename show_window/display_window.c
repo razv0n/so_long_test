@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:09:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/17 15:41:31 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/24 10:11:02 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,7 @@ void display_map(t_info *all)
             else if(all->map[i][j] == 'C')
                 mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_coin, j * IMG_WIDTH , i * IMG_HEIGHT);
             else if(all->map[i][j] == 'E')
-            {
                 mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_close, j * IMG_WIDTH , i * IMG_HEIGHT);
-                all->position_exit->x =  i;
-                all->position_exit->y =  j;
-            }
             else if(all->map[i][j] == 'P')
             {
                 mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_player_front, j * IMG_WIDTH , i * IMG_HEIGHT);
@@ -64,7 +60,6 @@ void display_window(t_info *all)
     all->image->img_player_right = mlx_xpm_file_to_image(all->mlx, PLAYER_RIGHT_XPM,  &i, &j);
     all->image->img_player_back = mlx_xpm_file_to_image(all->mlx, PLAYER_BACK_XPM,  &i, &j);
     all->image->img_exit_close = mlx_xpm_file_to_image(all->mlx, EXIT_CLOSED_XPM, &i, &j);
-    all->image->img_exit_open = mlx_xpm_file_to_image(all->mlx, OPEN_EXIT_XPM, &i, &j);
     all->image->img_coin = mlx_xpm_file_to_image(all->mlx, COINS_XPM, &i, &j);
     display_map(all);
     move_player(all);
