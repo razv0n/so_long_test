@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:21:39 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/20 16:11:20 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/24 11:43:25 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void    error_display(int count_E, int count_C, int count_P, t_info *all)
     if (count_E != 1)
     {
         free_data(all);
-        exit(ft_print("Error\nin the exit\n", 2));
+        exit(ft_print("Error\nIn the Exit\n", 2));
     }
     else if (count_C == 0)
     {
          free_data(all);
-        exit(ft_print("Error\nin the collecter\n", 2));
+        exit(ft_print("Error\nIn the Coins\n", 2));
     }
     else if (count_P != 1)
     {
          free_data(all);
-        exit(ft_print("Error\nin the position of player\n", 2));
+        exit(ft_print("Error\nIn The Player\n", 2));
     }
     all->how_many_C = count_C; // *HERE save the value of the collectebrs to use it to open the exit
 }
@@ -39,7 +39,7 @@ void    check_is_rectangular(t_info *all)
 
     i = 0;
     lenght = ft_len(all->map[i]);
-    while (all->map[i])
+    while (all->map[i]) // u should ask about this \n
     {
         if (all->map[i + 1] == NULL)
             lenght --;
@@ -65,6 +65,8 @@ int lenght_of_map(char *str)
         exit (1);
     }
     line = get_next_line(fd);
+    if (!line)
+        exit(1);
     lenght = 0;
     while (line)
     {
@@ -79,11 +81,7 @@ int lenght_of_map(char *str)
 void    check_elemnts(t_info *all)
 {
     int (count_E), (count_C), (count_P), (i), (j);
-    i = 0;
-    count_P = 0;
-    count_E = 0;
-    count_C = 0;
-    
+    (1) && (i = 0), count_C = 0, count_E = 0, count_P = 0;
     while(all->map[i])
     {
         j = 0;
@@ -109,8 +107,7 @@ void    check_elemnts(t_info *all)
 
 void    check_the_state_of_wall(t_info *all)
 {
-    int (i), (j), (lenght), (total_lenght);
-    total_lenght = lenght_of_map(all->name_of_map) - 1;
+    int (i), (j), (lenght);
     lenght = ft_strlen(all->map[0]) - 1;
     i = 0;
     while(all->map[i])
@@ -118,14 +115,8 @@ void    check_the_state_of_wall(t_info *all)
         j = 0;
         while (all->map[i][j])
         {
-            if (!i || i == total_lenght)
-            {
-                if (all->map[i][j] != '1' && all->map[i][j] != '\n')
-                {
-                    free_data(all);
-                    exit(ft_print("Error\nstate of wall\n", 2));
-                }
-            }
+            if (!i || i == all->lenght_of_map - 1)
+                check_error_wall(i, j ,all);
             else
             {
                 if (all->map[i][0] == '1' && all->map[i][lenght - 1] == '1')
@@ -133,7 +124,7 @@ void    check_the_state_of_wall(t_info *all)
                 else
                 {
                     free_data(all);
-                    exit(ft_print("Error\nstate of wall\n", 2));
+                    exit(ft_print("Error\nState Of Wall\n", 2));
                 }
             }
             j++;

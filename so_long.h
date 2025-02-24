@@ -29,9 +29,9 @@
 #include "ft_printf/ft_printf.h"
 #include <fcntl.h>
 #include <stdlib.h>
-#include <math.h>
+#include <math.h> // i dont use it
 #include "/usr/include/minilibx-linux/mlx.h"
-#include <stdio.h>
+#include <stdio.h> // i dont use it
 #include <stdbool.h>
 
 enum e_elemnt
@@ -61,10 +61,9 @@ typedef struct imgs
     void *img_floor;
     void *img_wall;
     void *img_coin;
-    void *img_exit;
-    void  *img_start;
-    void  *img_start_exit;
     void *img_exit_close;
+    void  *img_start_exit;
+    void  *img_start;
 }t_imgs;
 
 typedef struct info
@@ -72,7 +71,6 @@ typedef struct info
     t_imgs *image;
     t_wihe *dimensions;
     t_position *position;
-    t_position *position_exit;
     void *mlx;
     void *mlx_new_win;
     char **map;
@@ -91,16 +89,18 @@ int     ft_print(char   *str, int std);
 int	    ft_strcmp(const char *s1, char *s2);
 int	        ft_strcmp(const char *s1, char *s2);
 int    free_all(t_info *all);
+void    init_data(t_info *all, int lenght_of_map);
 void    check_is_rectangular(t_info *all);
 void    flood_fill(t_info *all);
 void    display_error(int count_E, int count_C, int count_P);
 void    check_elemnts(t_info *all);
+void    check_error_wall(int i, int j, t_info *all);
 void    check_the_state_of_wall(t_info *all);
 void    check_extension(char *str);
 void    free_map(char **map);
 void    count_hight_width(t_info *all);
 void display_window(t_info *all);
-void    submit_data_mapp(t_info *all);
+void    submit_data_map(t_info *all);
 void free_data(t_info *all);
 void    allocate_data(t_info **all, int lenght_of_map);
 void    move_player(t_info *all);
@@ -112,6 +112,5 @@ void    move_down(t_info *all);
 void    move_up(t_info *all);
 void    move_left(t_info *all);
 void    move_right(t_info *all);
-void    init_data(t_info *all);
 
 #endif

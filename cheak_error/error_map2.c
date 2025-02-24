@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:42 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/17 16:07:22 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/24 11:37:08 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void    check_elemts(t_info *all)
         i++;
     }   
 }
+
 void    check_extension(char *str)
 {
     int i;
@@ -50,8 +51,8 @@ void    check_extension(char *str)
             break;
         i++;
     }
-    if(!str[i] || !i || ft_strcmp(".ber", str + i))
-        exit(ft_print("Error\n", 2));
+    if(!str[i] || str[i - 1] == '/' || ft_strcmp(".ber", str + i))
+        exit(ft_print("Error\nUnsupported File Extension\n", 2));
 }
 
 void    flood_fill_aux(t_info *all, int i, int j)
@@ -92,11 +93,11 @@ void    flood_fill(t_info *all)
 
 void check_errors_of_map(t_info *all)
 {
-    if (!all->map[0])
-    {
-        free_data(all);
-        exit(1);
-    }
+    // if (!all->map[0]) // ? what is this 
+    // {
+    //     free_data(all);
+    //     exit(1);
+    // }
     check_is_rectangular(all);
     check_elemnts(all);
     check_the_state_of_wall(all);
@@ -108,5 +109,5 @@ void check_errors_of_map(t_info *all)
         free_data(all);
         exit(1);
     }
-    submit_data_mapp(all);
+    submit_data_map(all);
 }

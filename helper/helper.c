@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/14 16:14:16 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/24 12:10:53 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_strcmp(const char *s1, char *s2)
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+
 int    ft_len(char *str)
 {
     int i;
@@ -49,17 +50,14 @@ int    ft_len(char *str)
         i++;
     return (i);
 }
+
 void    count_hight_width(t_info *all)
 {
-    int i;
-
-    i = 0;
-    while (all->map[i])
-        i++;
-    all->dimensions->width = i;
+    all->dimensions->width = all->lenght_of_map;
     all->dimensions->height = ft_len(all->map[0]) - 1; //* -1 for the new line
 }
-void    submit_data_mapp(t_info *all)
+
+void    submit_data_map(t_info *all)
 {
         int fd, i;
 

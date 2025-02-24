@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:47:10 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/24 09:42:42 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/24 16:03:35 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void cheak_exit_game(t_info *all)
     if (!all->how_many_C)
     {
         ft_printf("move : %d\n", ++all->moves_count);
-        free_mlx(all);
-        free_data(all);
+        free_all(all);
         exit(ft_print("congrate u won\n", 1));
     }
 }
