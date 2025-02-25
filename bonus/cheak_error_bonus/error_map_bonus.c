@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:21:39 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/21 16:55:29 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/25 15:12:47 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void    error_display_bonus(int count_E, int count_C, int count_P, t_info *all)
     if (count_E != 1)
     {
         free_data_bonus(all);
-        exit(ft_print("Error\nin the exit\n", 2));
+        exit(ft_print("Error\nIn The Exit\n", 2));
     }
     else if (count_C == 0)
     {
          free_data_bonus(all);
-        exit(ft_print("Error\nin the collecter\n", 2));
+        exit(ft_print("Error\nIn The Coin\n", 2));
     }
     else if (count_P != 1)
     {
          free_data_bonus(all);
-        exit(ft_print("Error\nin the position of player\n", 2));
+        exit(ft_print("Error\nIn The Position Of Player\n", 2));
     }
     all->how_many_C = count_C;
 }
@@ -46,7 +46,7 @@ void    check_is_rectangular_bonus(t_info *all)
         if (lenght != ft_len(all->map[i]))
         {
             free_data_bonus(all);
-            exit(ft_print("Error\nthe map is not rectanglar\n", 2));
+            exit(ft_print("Error\nThe map is not rectanglar\n", 2));
         }
         i++;
     }
@@ -55,11 +55,7 @@ void    check_is_rectangular_bonus(t_info *all)
 void    check_elemnts_bonus(t_info *all)
 {
     int (count_E), (count_C), (count_P), (i), (j);
-    i = 0;
-    count_P = 0;
-    count_E = 0;
-    count_C = 0;
-    
+    (1) && (i = 0), count_E = 0, count_C = 0, count_P = 0;
     while(all->map[i])
     {
         j = 0;
@@ -73,10 +69,10 @@ void    check_elemnts_bonus(t_info *all)
                 count_P++;
             else if (all->map[i][j] == 'O')
                 all->how_many_O++;
-            else if (all->map[i][j] != '0' && all->map[i][j] != '1' && all->map[i][j] != '\n' && all->map[i][j] != 'O')
+            else if (all->map[i][j] != '0' && all->map[i][j] != '1' && all->map[i][j] != '\n')
             {
                 free_data_bonus(all);
-                exit(ft_print("Error\nunknown elemnts\n", 2));
+                exit(ft_print("Error\nUnknown Elemnts\n", 2));
             }
             j++;
         }
@@ -97,13 +93,7 @@ void    check_the_state_of_wall_bonus(t_info *all)
         while (all->map[i][j])
         {
             if (!i || i == total_lenght)
-            {
-                if (all->map[i][j] != '1' && all->map[i][j] != '\n')
-                {
-                    free_data_bonus(all);
-                    exit(ft_print("Error\nstate of wall\n", 2));
-                }
-            }
+             check_if_state_wall(i, j, all);
             else
             {
                 if (all->map[i][0] == '1' && all->map[i][lenght - 1] == '1')

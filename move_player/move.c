@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:22:11 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/24 10:07:26 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/25 18:06:24 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 {
     if (all->map[all->position->x + 1][all->position->y] == '1')
         return;
-         if (all->prev_elemnt == EXIT_E)
+    if (all->prev_elemnt == EXIT_E)
     {
         all->map[all->position->x][all->position->y] = 'E';
         mlx_put_image_to_window(all->mlx, all->mlx_new_win, all->image->img_exit_close, all->position->y * IMG_WIDTH , all->position->x * IMG_HEIGHT);

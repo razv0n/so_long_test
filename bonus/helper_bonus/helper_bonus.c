@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:10:37 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/22 18:47:23 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/25 15:32:58 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,7 @@ void    submit_data_map_bonus(t_info *all)
 
 void    count_hight_width_bonus(t_info *all)
 {
-    int i;
-
-    i = 0;
-    while (all->map[i])
-        i++;
-    all->dimensions->width = i;
+    all->dimensions->width = all->lenght_of_map;
     all->dimensions->height = ft_len(all->map[0]) - 1; //* -1 for the new line
 }
 static int	count_nm(long n)
@@ -88,6 +83,7 @@ char	*ft_itoa(int nm)
 	}
 	return (str);
 }
+
 void    str_window(t_info *all)
 {
     char *str;

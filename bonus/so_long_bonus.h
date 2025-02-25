@@ -15,7 +15,6 @@
 # define PLAYER_RIGHT_ALL    "assets/sprites/player/right.xpm"
 # define PLAYER_LEFT_ALL     "assets/sprites/player/left.xpm"
 # define PLAYER_CLOSE_XPM    "assets/sprites/player/close.xpm"
-# define OPEN_EXIT_XPM		"assets/sprites/open-exit.xpm"
 # define EXIT_CLOSED_XPM	"assets/sprites/exit-closed.xpm"
 # define START_XPM          "assets/sprites/start/START_1.xpm"
 # define START_EXIT_XPM     "assets/sprites/start/EXIT_1.xpm"
@@ -108,7 +107,6 @@ typedef struct imgs
     void  *img_start;
     void  *img_start_exit;
     void *img_exit_close;
-    void *img_exit_open;
     void *img_enemy_down1;
     void *img_enemy_down2;
     void *img_enemy_up1;
@@ -136,6 +134,7 @@ typedef struct info
     int *direction_o;
     int how_many_O;
     int moves_count;
+    int prev_elemnt_p;
     int *prev_elemnt;
     bool we_have_exit;
     bool exit_game;
@@ -146,6 +145,12 @@ int    ft_len(char *str);
 int     ft_print(char   *str, int std);
 int	    ft_strcmp(const char *s1, char *s2);
 int    free_all_bonus(t_info *all, int msg);
+int    move_enemy(t_info *all);
+int animation_enemy(t_info *all);
+int animation_player (t_info *all);
+int animate(t_info *all);
+int animate_move(t_info *all);
+char	*ft_itoa(int nm);
 void    display_error(int count_E, int count_C, int count_P);
 void    check_elemnts(t_info *all);
 void    check_extension(char *str);
@@ -153,7 +158,6 @@ void    str_window(t_info *all);
 void    free_map(char **map);
 void    count_hight_width_bonus(t_info *all);
 void display_window_bonus(t_info *all);
-int    move_enemy(t_info *all);
 void free_data_bonus(t_info *all);
 void    move_player_bonus(t_info *all);
 void free_mlx_bonus(t_info *all);
@@ -163,15 +167,11 @@ void    move_down_bonus(t_info *all);
 void    move_up_bonus(t_info *all);
 void    init_data_bonus(t_info *all);
 void    move_left_bonus(t_info *all);
-int animation_enemy(t_info *all);
 void    move_right_bonus(t_info *all);
-char	*ft_itoa(int nm);
-int animation_player (t_info *all);
 void display_window(t_info *all);
 void    allocate_data_bonus(t_info **all, int lenght_of_map);
 void    move_player(t_info *all);
 void cheak_exit_game(t_info *all);
-int animate(t_info *all);
 void    check_the_state_of_wall_bonus(t_info *all);
 void    check_elemnts_bonus(t_info *all);
 void    check_is_rectangular_bonus(t_info *all);
@@ -179,6 +179,15 @@ void    submit_data_map_bonus(t_info *all);
 void check_errors_of_map_bonus(t_info *all);
 void    flood_fill_bonus(t_info *all);
 void    allocation_enemy (t_info *all);
-int animate_move(t_info *all);
 void add_enemy(t_info *all , int x, int y, int index);
+void    free_mlx_bonus2(t_info *all);
+void    free_mlx_bonus3(t_info *all);
+void init_img(t_info *all);
+void    cheak_prev_elemnt(t_info *all);
+void check_if_state_wall(int i, int j, t_info *all);
+void add_exit(t_info *all, int i, int j);
+void add_player(t_info *all, int i, int j);
+void add_enemy(t_info *all , int x, int y, int index);
+void    cheak_if_null(t_info *all);
+void add_images_bonus2(t_info *all, int i, int j);
 #endif

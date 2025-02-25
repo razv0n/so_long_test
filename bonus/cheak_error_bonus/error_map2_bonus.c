@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:42 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/22 09:21:13 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/25 15:15:01 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    check_elemts_bonus(t_info *all)
             if(all->map[i][j] == 'C' || all->map[i][j] == 'E' || all->map[i][j] == 'P')
             {
                 free_data_bonus(all);
-                exit(ft_print("Error\none of elemnts can't be reach\n", 2));                
+                exit(ft_print("Error\nOne of elemnts can't be reach\n", 2));                
             }
             j++;
         }
