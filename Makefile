@@ -14,7 +14,7 @@ CHEAK_ERROR_DIR = cheak_error
 MAIN_DIR = main
 HELPER_DIR = helper
 GET_NEXT_LINE_DIR = get_next_line
-FUN_BNS = ./bonus/helper_bonus/helper3_bonus.c ./bonus/helper_bonus/helper2_bonus.c ./helper/helper2.c ./bonus/anim/animation_player.c ./bonus/move_player_bonus/move_enemy.c ./allocation_free/allocate_free.c ./bonus/allocation_free_bonus/allocation_enemy.c ./bonus/move_player_bonus/move_bonus.c ./bonus/allocation_free_bonus/allocate_free_bonus.c ./bonus/cheak_error_bonus/error_map2_bonus.c ./bonus/cheak_error_bonus/error_map_bonus.c  ./bonus/helper_bonus/helper_bonus.c   ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ./bonus/show_window_bonus/start_window_bonus.c  ./bonus/show_window_bonus/display_window_bonus.c  ./bonus/main_bonus/main_bonus.c  ./helper/helper.c  ./bonus/move_player_bonus/hook_bonus.c ./show_window/start_window.c ./cheak_error/error_map.c ./cheak_error/error_map2.c
+FUN_BNS = ./bonus/anim/update_enemy.c ./bonus/anim/update_player.c ./bonus/helper_bonus/helper3_bonus.c ./bonus/helper_bonus/helper2_bonus.c ./helper/helper2.c ./bonus/anim/animation_player.c ./bonus/move_player_bonus/move_enemy.c  ./bonus/allocation_free_bonus/allocation_enemy.c ./bonus/move_player_bonus/move_bonus.c ./bonus/allocation_free_bonus/allocate_free_bonus.c ./bonus/cheak_error_bonus/error_map2_bonus.c ./bonus/cheak_error_bonus/error_map_bonus.c  ./bonus/helper_bonus/helper_bonus.c   ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ./bonus/show_window_bonus/start_window_bonus.c  ./bonus/show_window_bonus/display_window_bonus.c  ./bonus/main_bonus/main_bonus.c  ./helper/helper.c  ./bonus/move_player_bonus/hook_bonus.c  ./cheak_error/error_map.c ./cheak_error/error_map2.c ./allocation_free/allocate_free.c
 OGJ_BNS = $(FUN_BNS:.c=.o)
 
 GREEN = \033[32m
@@ -107,7 +107,7 @@ clean:
 
 fclean: clean
 	@echo "$(CYAN)🗑️ Removing executable...$(RESET)"
-	rm -rf $(NAME) so_long_bonus BANNER
+	rm -rf $(NAME) so_long_bonus
 
 re: fclean all
 
@@ -134,6 +134,5 @@ BANNER:
 	@echo "		$(BLUE)🚀 Ready to explore? Let’s get started! 🚀$(RESET)"
 	@echo ""
 	@echo "		$(RED)❤️  Enjoy using the project! ❤️$(RESET)"
-	@touch BANNER
 
 .PHONY: re fclean clean all BANNER bonus

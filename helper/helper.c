@@ -6,25 +6,25 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:50:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/24 12:10:53 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/26 17:49:07 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int ft_print(char *str, int std)
+int	ft_print(char *str, int std)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (!str)
-        return (0);
-    while (str[i])
-    {
-        write(std, &str[i], 1);
-        i++;
-    }
-    return (1);
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		write(std, &str[i], 1);
+		i++;
+	}
+	return (1);
 }
 
 int	ft_strcmp(const char *s1, char *s2)
@@ -39,41 +39,40 @@ int	ft_strcmp(const char *s1, char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-int    ft_len(char *str)
+int	ft_len(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (!str)
-        return (i);
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	if (!str)
+		return (i);
+	while (str[i])
+		i++;
+	return (i);
 }
 
-void    count_hight_width(t_info *all)
+void	count_hight_width(t_info *all)
 {
-    all->dimensions->width = all->lenght_of_map;
-    all->dimensions->height = ft_len(all->map[0]) - 1; //* -1 for the new line
+	all->dimensions->width = all->lenght_of_map;
+	all->dimensions->height = ft_len(all->map[0]) - 1;
 }
 
-void    submit_data_map(t_info *all)
+void	submit_data_map(t_info *all)
 {
-        int fd, i;
-
-        fd = open(all->name_of_map, O_RDWR);
-        if (fd == -1)
-        {
-            free_data(all);
-            exit(1);
-        }
-        i = 0;
-        all->map[i] = get_next_line(fd);
-        while(all->map[i])
-        {
-            i++;
-            all->map[i] = get_next_line(fd);
-        }
-        all->map[i] = NULL;
-        close(fd);
+	int (fd), (i);
+	fd = open(all->name_of_map, O_RDWR);
+	if (fd == -1)
+	{
+		free_data(all);
+		exit(1);
+	}
+	i = 0;
+	all->map[i] = get_next_line(fd);
+	while (all->map[i])
+	{
+		i++;
+		all->map[i] = get_next_line(fd);
+	}
+	all->map[i] = NULL;
+	close(fd);
 }

@@ -12,21 +12,21 @@
 
 #include "../so_long.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_info *all;
-    int lenght_map;
+	t_info	*all;
+	int		lenght_map;
 
-    all = NULL;
-    if (ac == 2)
-    {
-        check_extension(av[1]);
-        lenght_map = lenght_of_map(av[1]);
-        allocate_data(&all, lenght_map);
-        all->name_of_map = av[1];
-        submit_data_map(all);
-        check_errors_of_map(all);
-        count_hight_width(all);
-        display_window(all);
-    }
+	all = NULL;
+	if (ac == 2)
+	{
+		check_extension(av[1]);
+		lenght_map = lenght_of_map(av[1]);
+		allocate_data(&all, lenght_map);
+		all->name_of_map = av[1];
+		submit_data_map(all);
+		check_errors_of_map(all);
+		count_hight_width(all);
+		display_window(all);
+	}
 }

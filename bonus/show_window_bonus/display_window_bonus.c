@@ -2,11 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   display_window_bonus.c                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+\       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:09:50 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/17 14:59:05 by mfahmi           ###   ########.fr       */
+/*   Created: 2025/02/26 21:00:40 by mfahmi            #+#    #+#             */
+/*   Updated: 2025/02/27 14:32:32 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	add_images_bonus(t_info *all, int i, int j)
 			PLAYER_RIGHT_XPM, &i, &j);
 	all->image->img_player_back = mlx_xpm_file_to_image(all->mlx,
 			PLAYER_BACK_XPM, &i, &j);
-all->image->img_player_right_a = mlx_xpm_file_to_image(all->mlx,
+	all->image->img_player_right_a = mlx_xpm_file_to_image(all->mlx,
 			PLAYER_RIGHT_ALL, &i, &j);
 	all->image->img_player_left_a = mlx_xpm_file_to_image(all->mlx,
 			PLAYER_LEFT_ALL, &i, &j);
@@ -34,17 +34,17 @@ all->image->img_player_right_a = mlx_xpm_file_to_image(all->mlx,
 			&i, &j);
 	all->image->img_player_down = mlx_xpm_file_to_image(all->mlx,
 			PLAYER_DOWN_XPM, &i, &j);
-	all->image->img_exit_close = mlx_xpm_file_to_image(all->mlx, EXIT_CLOSED_XPM,
-			&i, &j);
+	all->image->img_exit_close = mlx_xpm_file_to_image(all->mlx,
+			EXIT_CLOSED_XPM, &i, &j);
 	add_images_bonus2(all, i, j);
-    cheak_if_null(all);
+	cheak_if_null(all);
 }
 
 void	display_map_bonus(t_info *all)
 {
-	int j, index_enemy, i = 0;
+	int (j), (index_enemy), (i) = -1;
 	index_enemy = 0;
-	while (all->map[i])
+	while (all->map[++i])
 	{
 		j = 0;
 		while (all->map[i][j])
@@ -64,19 +64,18 @@ void	display_map_bonus(t_info *all)
 				add_player(all, i, j);
 			else if (all->map[i][j] == 'O')
 				add_enemy(all, i, j, index_enemy++);
-            j++;
+			j++;
 		}
-		i++;
 	}
 }
 
 void	display_window_bonus(t_info *all)
 {
-	int i, j = 0;
+	int (i), (j) = 0;
 	i = 0;
 	all->mlx = mlx_init();
 	if (!all->mlx)
-        free_all_bonus(all, 1337);
+		free_all_bonus(all, 1337);
 	the_start_window_bonus(all);
 	mlx_destroy_display(all->mlx);
 	free(all->mlx);

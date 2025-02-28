@@ -6,7 +6,7 @@
 /*   By: mfahmi <mfahmi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:22:11 by mfahmi            #+#    #+#             */
-/*   Updated: 2025/02/25 18:32:03 by mfahmi           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:50:38 by mfahmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,84 +14,80 @@
 
 void	move_down_bonus(t_info *all)
 {
-	if (all->map[all->position[PLAYER]->x + 1][all->position[PLAYER]->y] == '1')
+	if (all->map[all->position->x + 1][all->position->y] == '1')
 		return ;
-    cheak_prev_elemnt(all);
-	if (all->map[all->position[PLAYER]->x
-		+ 1][all->position[PLAYER]->y] == 'C')
-		all->how_many_C--;
-	else if (all->map[all->position[PLAYER]->x
-		+ 1][all->position[PLAYER]->y] == 'O')
+	cheak_prev_elemnt(all);
+	if (all->map[all->position->x + 1][all->position->y] == 'C')
+		all->how_many_c--;
+	else if (all->map[all->position->x
+			+ 1][all->position->y] == 'O')
 		free_all_bonus(all, LOSE_GAME);
-	else if (all->map[all->position[PLAYER]->x
-		+ 1][all->position[PLAYER]->y] == 'E')
+	else if (all->map[all->position->x
+			+ 1][all->position->y] == 'E')
 	{
 		cheak_exit_game_bonus(all);
-        all->prev_elemnt_p = EXIT_E;
+		all->prev_elemnt_p = EXIT_E;
 	}
-	all->map[++all->position[PLAYER]->x][all->position[PLAYER]->y] = 'P';
+	all->map[++all->position->x][all->position->y] = 'P';
 	str_window(all);
 }
 
 void	move_up_bonus(t_info *all)
 {
-	if (all->map[all->position[PLAYER]->x - 1][all->position[PLAYER]->y] == '1')
+	if (all->map[all->position->x - 1][all->position->y] == '1')
 		return ;
-    cheak_prev_elemnt(all);
-	if (all->map[all->position[PLAYER]->x
-		- 1][all->position[PLAYER]->y] == 'C')
-		all->how_many_C--;
-	else if (all->map[all->position[PLAYER]->x
-		- 1][all->position[PLAYER]->y] == 'O')
+	cheak_prev_elemnt(all);
+	if (all->map[all->position->x - 1][all->position->y] == 'C')
+		all->how_many_c--;
+	else if (all->map[all->position->x
+			- 1][all->position->y] == 'O')
 		free_all_bonus(all, LOSE_GAME);
-	else if (all->map[all->position[PLAYER]->x
-		- 1][all->position[PLAYER]->y] == 'E')
+	else if (all->map[all->position->x
+			- 1][all->position->y] == 'E')
 	{
 		cheak_exit_game_bonus(all);
 		all->prev_elemnt_p = EXIT_E;
 	}
-	all->map[--all->position[PLAYER]->x][all->position[PLAYER]->y] = 'P';
+	all->map[--all->position->x][all->position->y] = 'P';
 	str_window(all);
 }
 
 void	move_left_bonus(t_info *all)
 {
-	if (all->map[all->position[PLAYER]->x][all->position[PLAYER]->y - 1] == '1')
+	if (all->map[all->position->x][all->position->y - 1] == '1')
 		return ;
 	cheak_prev_elemnt(all);
-    if (all->map[all->position[PLAYER]->x][all->position[PLAYER]->y
-		- 1] == 'C')
-		all->how_many_C--;
-	else if (all->map[all->position[PLAYER]->x][all->position[PLAYER]->y
+	if (all->map[all->position->x][all->position->y - 1] == 'C')
+		all->how_many_c--;
+	else if (all->map[all->position->x][all->position->y
 		- 1] == 'O')
 		free_all_bonus(all, LOSE_GAME);
-	else if (all->map[all->position[PLAYER]->x][all->position[PLAYER]->y
+	else if (all->map[all->position->x][all->position->y
 		- 1] == 'E')
 	{
 		cheak_exit_game_bonus(all);
-        all->prev_elemnt_p = EXIT_E;
+		all->prev_elemnt_p = EXIT_E;
 	}
-	all->map[all->position[PLAYER]->x][--all->position[PLAYER]->y] = 'P';
+	all->map[all->position->x][--all->position->y] = 'P';
 	str_window(all);
 }
 
 void	move_right_bonus(t_info *all)
 {
-	if (all->map[all->position[PLAYER]->x][all->position[PLAYER]->y + 1] == '1')
+	if (all->map[all->position->x][all->position->y + 1] == '1')
 		return ;
-    cheak_prev_elemnt(all);
-	if (all->map[all->position[PLAYER]->x][all->position[PLAYER]->y
-		+ 1] == 'C')
-		all->how_many_C--;
-	else if (all->map[all->position[PLAYER]->x][all->position[PLAYER]->y
+	cheak_prev_elemnt(all);
+	if (all->map[all->position->x][all->position->y + 1] == 'C')
+		all->how_many_c--;
+	else if (all->map[all->position->x][all->position->y
 		+ 1] == 'O')
 		free_all_bonus(all, LOSE_GAME);
-	else if (all->map[all->position[PLAYER]->x][all->position[PLAYER]->y
+	else if (all->map[all->position->x][all->position->y
 		+ 1] == 'E')
 	{
 		cheak_exit_game_bonus(all);
-        all->prev_elemnt_p = EXIT_E;
+		all->prev_elemnt_p = EXIT_E;
 	}
-	all->map[all->position[PLAYER]->x][++all->position[PLAYER]->y] = 'P';
+	all->map[all->position->x][++all->position->y] = 'P';
 	str_window(all);
 }
